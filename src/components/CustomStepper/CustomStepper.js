@@ -1,24 +1,20 @@
 import React from 'react'
 import {
-	Box,
-	Stack,
+	Heading,
 	Step,
-	StepDescription,
 	StepIcon,
 	StepIndicator,
-	StepNumber,
 	StepSeparator,
 	StepStatus,
-	StepTitle,
 	Stepper,
-	Text,
+	VStack,
 } from '@chakra-ui/react'
 
 function CustomStepper({ steps, activeStep }) {
 	const activeStepText = steps[activeStep].description
 	return (
-		<Stack w={'full'}>
-			<Stepper size='sm' index={activeStep} gap='0'>
+		<VStack w={'full'}>
+			<Stepper w={'full'} size='sm' index={activeStep} gap='0'>
 				{steps.map((step, index) => (
 					<Step key={index} gap='0'>
 						<StepIndicator>
@@ -28,10 +24,10 @@ function CustomStepper({ steps, activeStep }) {
 					</Step>
 				))}
 			</Stepper>
-			<Text>
+			<Heading>
 				Step {activeStep + 1}: <b>{activeStepText}</b>
-			</Text>
-		</Stack>
+			</Heading>
+		</VStack>
 	)
 }
 
