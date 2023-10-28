@@ -1,4 +1,4 @@
-import { Box, HStack, NumberInput, NumberInputField, Stack, Text } from '@chakra-ui/react'
+import { HStack, NumberInput, NumberInputField, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { GiF1Car } from 'react-icons/gi'
 
