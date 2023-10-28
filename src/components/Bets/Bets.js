@@ -5,18 +5,18 @@ import { GiF1Car } from 'react-icons/gi'
 function Bets({ bets, onBetColorChange, cars }) {
 	const myCars = cars.filter(({ bid }) => bid)
 	return (
-		<VStack w={'full'} spacing={4}>
-			<VStack>
+		<VStack w={'full'} spacing={8}>
+			<HStack>
 				<Heading size={'sm'}>My Cars</Heading>
 				{myCars.map((car) => (
-					<HStack key={car.color}>
+					<HStack p={2} key={car.color} border={'solid 1px'} borderRadius={'xl'}>
 						<Box color={`${car.color}.500`}>
 							<GiF1Car size={50} />
 						</Box>
 						<Text color={`${car.color}.500`}>{`${car.bid} M`}</Text>
 					</HStack>
 				))}
-			</VStack>
+			</HStack>
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
 					<Heading color={`${bet.color}.500`}>{bet.title}</Heading>
