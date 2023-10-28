@@ -32,6 +32,24 @@ function App() {
 		{ pos: 6, title: '6th', color: '', payout: 0 },
 	])
 
+	function resetSheet() {
+		setActiveStep(0)
+		generateCars()
+		setBets([
+			{ number: 1, title: 'BET 1', color: '', payout: { 1: 9, 2: 6, 3: 3 } },
+			{ number: 2, title: 'BET 2', color: '', payout: { 1: 6, 2: 4, 3: 2 } },
+			{ number: 3, title: 'BET 3', color: '', payout: { 1: 3, 2: 2, 3: 1 } },
+		])
+		setPlacements([
+			{ pos: 1, title: '1st', color: '', payout: 12 },
+			{ pos: 2, title: '2nd', color: '', payout: 9 },
+			{ pos: 3, title: '3rd', color: '', payout: 6 },
+			{ pos: 4, title: '4th', color: '', payout: 4 },
+			{ pos: 5, title: '5th', color: '', payout: 2 },
+			{ pos: 6, title: '6th', color: '', payout: 0 },
+		])
+	}
+
 	function calcTotals() {
 		//* calculate auction total
 		const auction = cars.reduce((acc, { bid }) => {
@@ -98,11 +116,15 @@ function App() {
 		setActiveStep(activeStep - 1)
 	}
 
-	useEffect(() => {
+	function generateCars() {
 		const carColors = ['blackAlpha', 'blue', 'green', 'yellow', 'orange', 'red']
 
 		const carObjs = carColors.map((color) => new Car(color))
 		setCars(carObjs)
+	}
+
+	useEffect(() => {
+		generateCars()
 	}, [])
 
 	function renderComp() {
@@ -140,6 +162,7 @@ function App() {
 						stepBack={stepBack}
 						disableBack={activeStep <= 0}
 						disableForward={activeStep >= steps.length - 1}
+						resetSheet={resetSheet}
 					/>
 				</VStack>
 			)}
