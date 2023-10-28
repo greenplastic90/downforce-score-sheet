@@ -7,34 +7,60 @@ import Auctions from './components/Auctions/Auctions'
 import Title from './components/Title/Title'
 import Bets from './components/Bets/Bets'
 import RacePlacement from './components/RacePlacement/RacePlacement'
+import Winnings from './components/Winnings/Winnings'
 
 const steps = [
 	{ title: 'First', description: 'Auctions' },
 	{ title: 'Second', description: 'Bets' },
 	{ title: 'Third', description: 'Race Placment' },
-	{ title: 'Fourth', description: 'Score' },
+	{ title: 'Fourth', description: 'Winnings' },
 ]
-const bettingPayouts = {
-	1: { 1: 9, 2: 6, 3: 3 },
-	2: { 1: 6, 2: 4, 3: 2 },
-	3: { 1: 3, 2: 2, 3: 1 },
-}
 
 function App() {
 	const [cars, setCars] = useState(null)
 	const [bets, setBets] = useState([
-		{ title: 'BET 1', color: '' },
-		{ title: 'BET 2', color: '' },
-		{ title: 'BET 3', color: '' },
+		{ number: 1, title: 'BET 1', color: '', payout: { 1: 9, 2: 6, 3: 3 } },
+		{ number: 2, title: 'BET 2', color: '', payout: { 1: 6, 2: 4, 3: 2 } },
+		{ number: 3, title: 'BET 3', color: '', payout: { 1: 3, 2: 2, 3: 1 } },
 	])
 	const [placements, setPlacements] = useState([
-		{ title: '1st', color: '' },
-		{ title: '2nd', color: '' },
-		{ title: '3rd', color: '' },
-		{ title: '4th', color: '' },
-		{ title: '5th', color: '' },
-		{ title: '6th', color: '' },
+		{ pos: 1, title: '1st', color: '', payout: 12 },
+		{ pos: 2, title: '2nd', color: '', payout: 9 },
+		{ pos: 3, title: '3rd', color: '', payout: 6 },
+		{ pos: 4, title: '4th', color: '', payout: 4 },
+		{ pos: 5, title: '5th', color: '', payout: 2 },
+		{ pos: 6, title: '6th', color: '', payout: 0 },
 	])
+
+	function calcTotals() {
+		//* calculate auction total
+		const auction = cars.reduce((acc, { bid }) => {
+			return acc + bid
+		}, 0)
+
+		//* calculate racing total
+		const ownedCarsColors = cars.filter(({ bid }) => bid > 0).map(({ color }) => color)
+		const racing = placements.reduce(
+			(acc, { color, payout }) => (ownedCarsColors.includes(color) ? acc + payout : acc),
+			0
+		)
+
+		//* calculate bets
+		const topThreePlacments = placements.filter(({ pos }) => pos < 4)
+
+		const betting = bets.reduce((acc, bet) => {
+			const betWinnings = topThreePlacments.reduce((acc, placment) => {
+				return bet.color === placment.color ? acc + bet.payout[placment.pos] : acc
+			}, 0)
+
+			return acc + betWinnings
+		}, 0)
+
+		// calculate total winnings
+		const winning = racing + betting - auction
+
+		return { auction, racing, betting, winning }
+	}
 
 	const { activeStep, setActiveStep } = useSteps({
 		index: 0,
@@ -42,10 +68,11 @@ function App() {
 	})
 
 	function updateCarBid(carColor, newBid) {
+		const bid = isNaN(newBid) ? 0 : newBid
 		setCars((prevCars) => {
 			return prevCars.map((car) => {
 				if (car.color === carColor) {
-					return { ...car, bid: newBid }
+					return { ...car, bid: bid }
 				}
 				return car
 			})
@@ -72,7 +99,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		const carColors = ['blackAlpha', 'blue', 'green', 'orange', 'red', 'yellow']
+		const carColors = ['blackAlpha', 'blue', 'green', 'yellow', 'orange', 'red']
 
 		const carObjs = carColors.map((color) => new Car(color))
 		setCars(carObjs)
@@ -92,8 +119,8 @@ function App() {
 						cars={cars}
 					/>
 				)
-
-			// 	return <Score /> // Assume you have a Score component
+			case 3:
+				return <Winnings calcTotals={calcTotals} />
 			default:
 				return null
 		}

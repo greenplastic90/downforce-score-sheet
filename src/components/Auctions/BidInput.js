@@ -13,6 +13,7 @@ function BidInput({ car, onBidChange }) {
 			</Stack>
 			<NumberInput
 				onChange={handleValueChange}
+				value={car.bid}
 				w={'full'}
 				defaultValue={0}
 				max={6}
