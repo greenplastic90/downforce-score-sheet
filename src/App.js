@@ -6,6 +6,7 @@ import NavButtons from './components/NavButtons/NavButtons'
 import Auctions from './components/Auctions/Auctions'
 import Title from './components/Title/Title'
 import Bets from './components/Bets/Bets'
+import RacePlacement from './components/RacePlacement/RacePlacement'
 
 const steps = [
 	{ title: 'First', description: 'Auctions' },
@@ -26,6 +27,14 @@ function App() {
 		{ title: 'BET 2', color: '' },
 		{ title: 'BET 3', color: '' },
 	])
+	const [placements, setPlacements] = useState([
+		{ title: '1st', color: '' },
+		{ title: '2nd', color: '' },
+		{ title: '3rd', color: '' },
+		{ title: '4th', color: '' },
+		{ title: '5th', color: '' },
+		{ title: '6th', color: '' },
+	])
 
 	const { activeStep, setActiveStep } = useSteps({
 		index: 0,
@@ -45,6 +54,13 @@ function App() {
 	function handleBetColorChange(betTitle, selectedColor) {
 		setBets((prevBets) =>
 			prevBets.map((bet) => (bet.title === betTitle ? { ...bet, color: selectedColor } : bet))
+		)
+	}
+	function handlePlacementChange(placementTitle, selectedColor) {
+		setPlacements((prevPlacements) =>
+			prevPlacements.map((placement) =>
+				placement.title === placementTitle ? { ...placement, color: selectedColor } : placement
+			)
 		)
 	}
 
@@ -68,9 +84,15 @@ function App() {
 				return <Auctions cars={cars} onBidChange={updateCarBid} />
 			case 1:
 				return <Bets bets={bets} onBetColorChange={handleBetColorChange} cars={cars} />
-			// case 2:
-			// 	return <RacePlacement /> // Assume you have a RacePlacement component
-			// case 3:
+			case 2:
+				return (
+					<RacePlacement
+						placements={placements}
+						onPlacementColorChange={handlePlacementChange}
+						cars={cars}
+					/>
+				)
+
 			// 	return <Score /> // Assume you have a Score component
 			default:
 				return null
