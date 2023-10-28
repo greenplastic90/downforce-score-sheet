@@ -9,6 +9,7 @@ function RacePlacement({ placements, onPlacementColorChange, cars }) {
 					<Heading color={`${placement.color}.500`}>{placement.title}</Heading>
 					<Select
 						onChange={(e) => onPlacementColorChange(placement.title, e.target.value)}
+						value={placement.color}
 						placeholder='Select Car'
 						color={placement.color}
 						borderColor={placement.color}
