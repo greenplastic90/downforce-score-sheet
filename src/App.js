@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Car } from './classes'
-import { VStack, useSteps } from '@chakra-ui/react'
+import { Container, VStack, useSteps } from '@chakra-ui/react'
 import CustomStepper from './components/CustomStepper/CustomStepper'
 import NavButtons from './components/NavButtons/NavButtons'
 import Auctions from './components/Auctions/Auctions'
@@ -86,7 +86,8 @@ function App() {
 	})
 
 	function updateCarBid(carColor, newBid) {
-		const bid = isNaN(newBid) ? 0 : newBid
+		// bids can't be over 6
+		const bid = isNaN(newBid) ? 0 : newBid > 6 ? 6 : newBid
 		setCars((prevCars) => {
 			return prevCars.map((car) => {
 				if (car.color === carColor) {
@@ -151,20 +152,22 @@ function App() {
 	return (
 		<>
 			{cars && (
-				<VStack bg={'gray.300'} p={8} spacing={8} minH={'100vh'} justify={'space-between'}>
-					<VStack w={'full'} spacing={8}>
-						<Title />
-						<CustomStepper steps={steps} activeStep={activeStep} />
+				<Container>
+					<VStack p={8} spacing={8} minH={'100vh'} justify={'space-between'}>
+						<VStack w={'full'} spacing={8}>
+							<Title />
+							<CustomStepper steps={steps} activeStep={activeStep} />
+						</VStack>
+						{renderComp()}
+						<NavButtons
+							stepForward={stepForward}
+							stepBack={stepBack}
+							disableBack={activeStep <= 0}
+							disableForward={activeStep >= steps.length - 1}
+							resetSheet={resetSheet}
+						/>
 					</VStack>
-					{renderComp()}
-					<NavButtons
-						stepForward={stepForward}
-						stepBack={stepBack}
-						disableBack={activeStep <= 0}
-						disableForward={activeStep >= steps.length - 1}
-						resetSheet={resetSheet}
-					/>
-				</VStack>
+				</Container>
 			)}
 		</>
 	)
