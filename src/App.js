@@ -68,7 +68,7 @@ function App() {
 
 		const betting = bets.reduce((acc, bet) => {
 			const betWinnings = topThreePlacments.reduce((acc, placment) => {
-				return bet.color === placment.color ? acc + bet.payout[placment.pos] : acc
+				return bet.color === placment.color && placment.color ? acc + bet.payout[placment.pos] : acc
 			}, 0)
 
 			return acc + betWinnings
