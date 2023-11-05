@@ -1,6 +1,7 @@
 import { Box, HStack, Heading, Select, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { GiF1Car } from 'react-icons/gi'
+import BettingPayouts from './BettingPayouts'
 
 function Bets({ bets, onBetColorChange, cars }) {
 	const myCars = cars.filter(({ bid }) => bid)
@@ -19,7 +20,10 @@ function Bets({ bets, onBetColorChange, cars }) {
 			</HStack>
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
-					<Heading color={`${bet.color}.500`}>{bet.title}</Heading>
+					<Heading fontStyle={'italic'} color={`${bet.color}.500`}>
+						{bet.title}
+					</Heading>
+					<BettingPayouts payout={bet.payout} />
 					<Select
 						onChange={(e) => onBetColorChange(bet.title, e.target.value)}
 						value={bet.color}
