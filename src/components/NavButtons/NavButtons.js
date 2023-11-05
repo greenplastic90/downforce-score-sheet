@@ -5,12 +5,22 @@ import { MdArrowBack, MdArrowForward } from 'react-icons/md'
 function NavButtons({ stepForward, stepBack, disableForward, disableBack, resetSheet }) {
 	return (
 		<HStack width={'full'}>
-			<Button onClick={resetSheet}>Reset</Button>
-			<Button w={'full'} onClick={stepBack} isDisabled={disableBack} colorScheme={'blue'}>
-				<MdArrowBack />
+			{/* <Button onClick={resetSheet}>Reset</Button> */}
+			<Button
+				w={'full'}
+				onClick={stepBack}
+				isDisabled={disableBack}
+				colorScheme={'blackAlpha'}
+				borderRadius={'none'}>
+				<MdArrowBack size={30} />
 			</Button>
-			<Button w={'full'} onClick={stepForward} isDisabled={disableForward} colorScheme={'blue'}>
-				<MdArrowForward />
+			<Button
+				w={'full'}
+				onClick={stepForward}
+				isDisabled={disableForward}
+				colorScheme={'blackAlpha'}
+				borderRadius={'none'}>
+				<MdArrowForward size={30} />
 			</Button>
 		</HStack>
 	)
