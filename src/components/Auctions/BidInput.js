@@ -1,6 +1,6 @@
-import { HStack, NumberInput, NumberInputField, Stack, Text } from '@chakra-ui/react'
+import { HStack, NumberInput, NumberInputField } from '@chakra-ui/react'
 import React from 'react'
-import { GiF1Car } from 'react-icons/gi'
+import Car from '../miscellaneous/Car'
 
 function BidInput({ car, onBidChange }) {
 	function handleValueChange(valueAsString, valueAsNumber) {
@@ -8,19 +8,11 @@ function BidInput({ car, onBidChange }) {
 	}
 	const carName = car.color === 'blackAlpha' ? 'black' : car.color
 	return (
-		<HStack h={'40px'}>
-			<HStack h={'inherit'} bg={`${car.color}.100`} px={2}>
-				<HStack minW={'150px'}>
-					<Stack color={`${car.color}.600`}>
-						<GiF1Car size={50} />
-					</Stack>
-					<Text casing={'uppercase'} color={'gray.600'} fontWeight={'bold'} fontStyle={'italic'}>
-						{carName}
-					</Text>
-				</HStack>
-			</HStack>
+		<HStack w={'full'} h={'50px'}>
+			<Car name={carName} color={car.color} />
 			<NumberInput
 				h={'inherit'}
+				maxW={'80px'}
 				onChange={handleValueChange}
 				value={car.bid}
 				defaultValue={0}
@@ -29,7 +21,8 @@ function BidInput({ car, onBidChange }) {
 				keepWithinRange={false}
 				clampValueOnBlur={false}>
 				<NumberInputField
-					textAlign={'center'}
+					h={'inherit'}
+					textAlign={'end'}
 					fontWeight={'bold'}
 					border={'2px solid'}
 					borderRadius={'none'}
