@@ -23,7 +23,7 @@ function Bets({ bets, onBetColorChange, cars }) {
 					<Heading fontStyle={'italic'} color={`${bet.color}.500`}>
 						{bet.title}
 					</Heading>
-					<BettingPayouts payout={bet.payout} />
+					<BettingPayouts payout={bet.payout} color={bet.color} />
 					<Select
 						onChange={(e) => onBetColorChange(bet.title, e.target.value)}
 						value={bet.color}
