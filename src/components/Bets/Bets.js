@@ -1,23 +1,33 @@
-import { Box, HStack, Heading, Select, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Heading, Select, Stack, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { GiF1Car } from 'react-icons/gi'
 import BettingPayouts from './BettingPayouts'
+import Car from '../miscellaneous/Car'
 
 function Bets({ bets, onBetColorChange, cars }) {
 	const myCars = cars.filter(({ bid }) => bid)
 	return (
 		<VStack w={'full'} spacing={8}>
-			<HStack>
+			<Stack w={'full'}>
 				<Heading size={'sm'}>My Cars</Heading>
 				{myCars.map((car) => (
-					<HStack p={2} key={car.color} border={'solid 1px'} borderRadius={'xl'}>
-						<Box color={`${car.color}.500`}>
-							<GiF1Car size={50} />
-						</Box>
-						<Text color={`${car.color}.500`}>{`${car.bid} M`}</Text>
+					<HStack w={'full'} h={'50px'} p={2} key={car.color}>
+						<Car name={car.name} color={car.color} />
+						<Stack
+							justify={'center'}
+							h={'inherit'}
+							bg={`${car.color}.100`}
+							border={'2px solid red'}>
+							<Text
+								textAlign={'center'}
+								minW={'50px'}
+								fontSize={'xl'}
+								fontWeight={'bold'}
+								fontStyle={'italic'}>{`${car.bid} M`}</Text>
+						</Stack>
 					</HStack>
 				))}
-			</HStack>
+			</Stack>
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
 					<Heading fontStyle={'italic'} color={`${bet.color}.500`}>
@@ -40,7 +50,7 @@ function Bets({ bets, onBetColorChange, cars }) {
 						}}>
 						{cars.map((car) => (
 							<option key={car.color} value={car.color}>
-								{car.color === 'blackAlpha' ? 'black' : car.color}
+								{car.name}
 							</option>
 						))}
 					</Select>

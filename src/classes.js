@@ -1,6 +1,7 @@
 export class Car {
-	constructor(color) {
-		this.color = color
+	constructor(name) {
+		this.name = name
+		this.color = name === 'black' ? 'blackAlpha' : name
 		this.bid = 0
 	}
 }

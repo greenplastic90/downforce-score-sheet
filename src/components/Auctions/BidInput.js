@@ -6,10 +6,10 @@ function BidInput({ car, onBidChange }) {
 	function handleValueChange(valueAsString, valueAsNumber) {
 		onBidChange(car.color, valueAsNumber)
 	}
-	const carName = car.color === 'blackAlpha' ? 'black' : car.color
+
 	return (
 		<HStack w={'full'} h={'50px'}>
-			<Car name={carName} color={car.color} />
+			<Car name={car.name} color={car.color} />
 			<NumberInput
 				h={'inherit'}
 				maxW={'80px'}

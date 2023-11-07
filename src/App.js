@@ -118,9 +118,9 @@ function App() {
 	}
 
 	function generateCars() {
-		const carColors = ['blackAlpha', 'blue', 'green', 'yellow', 'orange', 'red']
+		const carNames = ['black', 'blue', 'green', 'yellow', 'orange', 'red']
 
-		const carObjs = carColors.map((color) => new Car(color))
+		const carObjs = carNames.map((name) => new Car(name))
 		setCars(carObjs)
 	}
 
