@@ -4,7 +4,26 @@ const colors = {}
 
 const fonts = {}
 
-const components = {}
+const components = {
+	Heading: {
+		baseStyle: {
+			color: 'gray.600',
+			textTransform: 'uppercase',
+			fontWeight: 'bold',
+			fontStyle: 'italic',
+			fontSize: 'xl',
+		},
+	},
+	Text: {
+		baseStyle: {
+			color: 'gray.600',
+			textTransform: 'uppercase',
+			fontWeight: 'bold',
+			fontStyle: 'italic',
+			fontSize: 'xl',
+		},
+	},
+}
 
 const theme = extendTheme({
 	colors,

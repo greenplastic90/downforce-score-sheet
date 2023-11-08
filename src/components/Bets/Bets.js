@@ -1,6 +1,6 @@
-import { Box, HStack, Heading, Select, Stack, Text, VStack } from '@chakra-ui/react'
+import { HStack, Heading, Select, Stack, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
-import { GiF1Car } from 'react-icons/gi'
+
 import BettingPayouts from './BettingPayouts'
 import Car from '../miscellaneous/Car'
 
@@ -18,21 +18,14 @@ function Bets({ bets, onBetColorChange, cars }) {
 							h={'inherit'}
 							bg={`${car.color}.100`}
 							border={'2px solid red'}>
-							<Text
-								textAlign={'center'}
-								minW={'50px'}
-								fontSize={'xl'}
-								fontWeight={'bold'}
-								fontStyle={'italic'}>{`${car.bid} M`}</Text>
+							<Text textAlign={'center'} minW={'50px'}>{`${car.bid} M`}</Text>
 						</Stack>
 					</HStack>
 				))}
 			</Stack>
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
-					<Heading fontStyle={'italic'} color={`${bet.color}.500`}>
-						{bet.title}
-					</Heading>
+					<Heading>{bet.title}</Heading>
 					<BettingPayouts payout={bet.payout} color={bet.color} />
 					<Select
 						onChange={(e) => onBetColorChange(bet.title, e.target.value)}

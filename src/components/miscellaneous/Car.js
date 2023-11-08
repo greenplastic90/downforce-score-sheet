@@ -9,14 +9,7 @@ function Car({ name, color }) {
 				<Stack color={`${color}.600`}>
 					<GiF1Car size={80} />
 				</Stack>
-				<Text
-					casing={'uppercase'}
-					color={'gray.600'}
-					fontSize={'xl'}
-					fontWeight={'bold'}
-					fontStyle={'italic'}>
-					{name}
-				</Text>
+				<Text>{name}</Text>
 			</HStack>
 		</HStack>
 	)
