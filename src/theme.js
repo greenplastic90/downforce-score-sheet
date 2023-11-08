@@ -1,13 +1,15 @@
 import { extendTheme } from '@chakra-ui/react'
 
-const colors = {}
+const colors = {
+	default: 'gray.600',
+}
 
 const fonts = {}
 
 const components = {
 	Heading: {
 		baseStyle: {
-			color: 'gray.600',
+			color: `${colors.default}`,
 			textTransform: 'uppercase',
 			fontWeight: 'bold',
 			fontStyle: 'italic',
@@ -16,7 +18,7 @@ const components = {
 	},
 	Text: {
 		baseStyle: {
-			color: 'gray.600',
+			color: `${colors.default}`,
 			textTransform: 'uppercase',
 			fontWeight: 'bold',
 			fontStyle: 'italic',

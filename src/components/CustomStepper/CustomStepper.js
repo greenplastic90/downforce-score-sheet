@@ -14,7 +14,7 @@ function CustomStepper({ steps, activeStep }) {
 	const activeStepText = steps[activeStep].description
 	return (
 		<VStack w={'full'}>
-			<Stepper w={'full'} size='sm' index={activeStep} gap='0'>
+			<Stepper w={'full'} size='sm' colorScheme='gray' index={activeStep} gap='0'>
 				{steps.map((step, index) => (
 					<Step key={index} gap='0'>
 						<StepIndicator>
