@@ -7,9 +7,14 @@ const splitOrdinalNumber = (number) => {
 }
 
 function BettingPayouts({ payout, color }) {
-	const carName = color === 'blackAlpha' ? 'black' : color
 	return (
-		<HStack w={'full'} p={2} border={'3px solid'} borderRadius={'lg'} bg={`${color}.500`}>
+		<HStack
+			w={'full'}
+			p={2}
+			border={'3px solid'}
+			borderColor={'default'}
+			borderRadius={'lg'}
+			bg={`${color}.500`}>
 			<VStack w={'full'}>
 				<HStack w={'full'} justify={'space-evenly'}>
 					{Object.entries(payout).map(([position, amount]) => {

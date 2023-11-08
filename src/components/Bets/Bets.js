@@ -5,7 +5,8 @@ import BettingPayouts from './BettingPayouts'
 import Car from '../miscellaneous/Car'
 
 function Bets({ bets, onBetColorChange, cars }) {
-	const myCars = cars.filter(({ bid }) => bid)
+	const myCars = cars.filter(({ bid }) => bid).sort((a, b) => b.bid - a.bid)
+
 	return (
 		<VStack w={'full'} spacing={8}>
 			<Stack w={'full'}>
