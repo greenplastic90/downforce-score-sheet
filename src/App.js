@@ -12,7 +12,7 @@ import Winnings from './components/Winnings/Winnings'
 const steps = [
 	{ title: 'First', description: 'Auctions' },
 	{ title: 'Second', description: 'Bets' },
-	{ title: 'Third', description: 'Race Placment' },
+	{ title: 'Third', description: 'Placements' },
 	{ title: 'Fourth', description: 'Winnings' },
 ]
 
