@@ -1,4 +1,4 @@
-import { HStack, NumberInput, NumberInputField } from '@chakra-ui/react'
+import { NumberInput, NumberInputField } from '@chakra-ui/react'
 import React from 'react'
 import Car from '../miscellaneous/Car'
 import CarsWrapper from '../miscellaneous/CarsWrapper'

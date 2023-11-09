@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, Divider, HStack, VStack } from '@chakra-ui/react'
+import { Box, Text, HStack, VStack } from '@chakra-ui/react'
 
 const splitOrdinalNumber = (number) => {
 	const ordinals = { 1: 'st', 2: 'nd', 3: 'rd' }
