@@ -12,9 +12,9 @@ function BettingPayouts({ payout, color }) {
 			w={'full'}
 			p={2}
 			border={'3px solid'}
-			borderColor={'default'}
+			borderColor={'gray.600'}
 			borderRadius={'lg'}
-			bg={`${color}.500`}>
+			bg={`${color}.100`}>
 			<VStack w={'full'}>
 				<HStack w={'full'} justify={'space-evenly'}>
 					{Object.entries(payout).map(([position, amount]) => {
@@ -27,7 +27,7 @@ function BettingPayouts({ payout, color }) {
 										{suffix}
 									</Text>
 								</Text>
-								<Divider orientation='horizontal' borderWidth='2px' />
+								{/* <Divider orientation='horizontal' borderWidth='2px' /> */}
 								<Text fontSize='lg' fontWeight='bold'>
 									${amount} M
 								</Text>

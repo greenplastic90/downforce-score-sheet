@@ -1,29 +1,12 @@
-import { HStack, Heading, Select, Stack, Text, VStack } from '@chakra-ui/react'
+import { Heading, Select, VStack } from '@chakra-ui/react'
 import React from 'react'
-
 import BettingPayouts from './BettingPayouts'
-import Car from '../miscellaneous/Car'
+import MyCars from '../miscellaneous/MyCars'
 
 function Bets({ bets, onBetColorChange, cars }) {
-	const myCars = cars.filter(({ bid }) => bid).sort((a, b) => b.bid - a.bid)
-
 	return (
 		<VStack w={'full'} spacing={8}>
-			<Stack w={'full'}>
-				<Heading size={'sm'}>My Cars</Heading>
-				{myCars.map((car) => (
-					<HStack w={'full'} h={'50px'} p={2} key={car.color}>
-						<Car name={car.name} color={car.color} />
-						<Stack
-							justify={'center'}
-							h={'inherit'}
-							bg={`${car.color}.100`}
-							border={'2px solid red'}>
-							<Text textAlign={'center'} minW={'50px'}>{`${car.bid} M`}</Text>
-						</Stack>
-					</HStack>
-				))}
-			</Stack>
+			<MyCars cars={cars} />
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
 					<Heading>{bet.title}</Heading>
