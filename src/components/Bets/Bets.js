@@ -2,11 +2,14 @@ import { Heading, Select, VStack } from '@chakra-ui/react'
 import React from 'react'
 import BettingPayouts from './BettingPayouts'
 import MyCars from '../miscellaneous/MyCars'
+import BetDisplay from './BetDisplay'
 
 function Bets({ bets, onBetColorChange, cars }) {
 	return (
 		<VStack w={'full'} spacing={8}>
 			<MyCars cars={cars} />
+			<BetDisplay bets={bets} />
+
 			{bets.map((bet) => (
 				<VStack w={'full'} key={bet.title}>
 					<Heading>{bet.title}</Heading>
@@ -15,19 +18,11 @@ function Bets({ bets, onBetColorChange, cars }) {
 						onChange={(e) => onBetColorChange(bet.title, e.target.value)}
 						value={bet.color}
 						placeholder='Select Car'
-						color={bet.color}
-						colorScheme={bet.color}
-						borderColor={bet.color}
-						_focus={{
-							borderColor: bet.color,
-							boxShadow: `0 0 0 1px ${bet.color}`,
-						}}
-						_hover={{
-							borderColor: bet.color,
-						}}>
+						colorScheme={'gray'}
+						borderColor={'gray.500'}>
 						{cars.map((car) => (
 							<option key={car.color} value={car.color}>
-								{car.name}
+								{car.name.toUpperCase()}
 							</option>
 						))}
 					</Select>

@@ -1,6 +1,7 @@
 import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import Car from './Car'
+import CarsWrapper from './CarsWrapper'
 
 function MyCars({ cars }) {
 	const myCars = cars.filter(({ bid }) => bid).sort((a, b) => b.bid - a.bid)
@@ -9,17 +10,13 @@ function MyCars({ cars }) {
 			{myCars.length > 0 && (
 				<Stack w={'full'}>
 					<Heading size={'sm'}>My Cars</Heading>
-					{myCars.map((car) => (
-						<HStack w={'full'} h={'50px'} key={car.color}>
-							<Car name={car.name} color={car.color} />
-							<Stack
-								justify={'center'}
-								h={'inherit'}
-								bg={`${car.color}.100`}
-								border={'2px solid red'}>
-								<Text textAlign={'center'} minW={'60px'}>{`$${car.bid} M`}</Text>
+					{myCars.map(({ name, color, bid }) => (
+						<CarsWrapper key={color}>
+							<Car name={name} color={color} />
+							<Stack justify={'center'} h={'inherit'} bg={`${color}.100`} border={'2px solid red'}>
+								<Text textAlign={'center'} minW={'60px'}>{`$${bid} M`}</Text>
 							</Stack>
-						</HStack>
+						</CarsWrapper>
 					))}
 				</Stack>
 			)}
