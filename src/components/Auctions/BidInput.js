@@ -1,6 +1,7 @@
 import { HStack, NumberInput, NumberInputField } from '@chakra-ui/react'
 import React from 'react'
 import Car from '../miscellaneous/Car'
+import CarsWrapper from '../miscellaneous/CarsWrapper'
 
 function BidInput({ car, onBidChange }) {
 	function handleValueChange(valueAsString, valueAsNumber) {
@@ -8,7 +9,7 @@ function BidInput({ car, onBidChange }) {
 	}
 
 	return (
-		<HStack w={'full'} h={'50px'}>
+		<CarsWrapper>
 			<Car name={car.name} color={car.color} />
 			<NumberInput
 				h={'inherit'}
@@ -37,7 +38,7 @@ function BidInput({ car, onBidChange }) {
 					}}
 				/>
 			</NumberInput>
-		</HStack>
+		</CarsWrapper>
 	)
 }
 
