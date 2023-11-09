@@ -160,6 +160,7 @@ function App() {
 						</VStack>
 						{renderComp()}
 						<NavButtons
+							activeStep={activeStep}
 							stepForward={stepForward}
 							stepBack={stepBack}
 							disableBack={activeStep <= 0}
