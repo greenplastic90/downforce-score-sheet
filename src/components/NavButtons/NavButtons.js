@@ -12,7 +12,6 @@ function NavButtons({
 }) {
 	return (
 		<VStack w={'full'}>
-			{console.log(activeStep)}
 			{activeStep === 3 && (
 				<Button colorScheme='orange' onClick={resetSheet} borderRadius={'none'}>
 					Reset
