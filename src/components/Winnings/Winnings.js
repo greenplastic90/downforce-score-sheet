@@ -10,8 +10,8 @@ function Winnings({ calcTotals }) {
 		setTotals(calculatedTotals)
 	}, [calcTotals])
 	return (
-		<VStack spacing={8}>
-			<HStack justify={'c'}>
+		<VStack justify={'center'} w={'full'} spacing={0}>
+			<HStack>
 				<TotalDisplay title={'Racing Total'} total={totals.racing} />
 				<Text>+</Text>
 				<TotalDisplay title={'Betting Total'} total={totals.betting} />

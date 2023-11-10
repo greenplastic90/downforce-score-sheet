@@ -9,12 +9,14 @@ function TotalDisplay({ title, total, red = false }) {
 				h={10}
 				justify={'center'}
 				border={'2px solid'}
-				borderRadius={'xl'}
+				borderRadius={'md'}
 				borderColor={red ? 'red.500' : 'gray.600'}>
 				<Text color={red ? 'red.500' : 'gray.600'}>{`${total} M`}</Text>
 			</VStack>
 
-			<Text color={red ? 'red.500' : 'gray.600'}>{title}</Text>
+			<Text fontSize={'sm'} color={red ? 'red.500' : 'gray.600'}>
+				{title}
+			</Text>
 		</VStack>
 	)
 }
