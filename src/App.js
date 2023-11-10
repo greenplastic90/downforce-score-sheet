@@ -35,6 +35,7 @@ function App() {
 
 	function resetSheet() {
 		setActiveStep(0)
+		setActiveBetIndex(0)
 		generateCars()
 		setBets([
 			{ number: 1, title: 'BET 1', color: '', payout: { 1: 9, 2: 6, 3: 3 } },
