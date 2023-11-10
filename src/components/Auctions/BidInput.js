@@ -24,7 +24,6 @@ function BidInput({ car, onBidChange }) {
 				<NumberInputField
 					h={'inherit'}
 					textAlign={'end'}
-					fontSize={'xl'}
 					color={'gray.600'}
 					fontWeight={'bold'}
 					border={'2px solid'}
