@@ -4,14 +4,7 @@ import BettingPayouts from './BettingPayouts'
 import MyCars from '../miscellaneous/MyCars'
 import BetDisplay from './BetDisplay'
 
-function Bets({ bets, onBetColorChange, cars }) {
-	const [activeBetIndex, setActiveBetIndex] = useState(0)
-	const [showBets, setShowBets] = useState(true)
-
-	useEffect(() => {
-		setShowBets(!bets.every(({ color }) => color))
-	}, [bets])
-
+function Bets({ bets, onBetColorChange, cars, activeBetIndex, setActiveBetIndex }) {
 	const handleColorChange = (title, newColor) => {
 		onBetColorChange(title, newColor)
 
@@ -33,7 +26,7 @@ function Bets({ bets, onBetColorChange, cars }) {
 
 			{bets.map(({ number, color, title, payout }, betIndex) => (
 				<React.Fragment key={number}>
-					{activeBetIndex === betIndex && showBets && (
+					{activeBetIndex === betIndex && (
 						<VStack w={'full'}>
 							<Heading>{title}</Heading>
 							<BettingPayouts payout={payout} color={color} />
@@ -55,7 +48,7 @@ function Bets({ bets, onBetColorChange, cars }) {
 				</React.Fragment>
 			))}
 
-			{activeBetIndex >= bets.length && !showBets && <Heading>All bets are set!</Heading>}
+			{activeBetIndex >= bets.length && <Heading>All bets are set!</Heading>}
 		</VStack>
 	)
 }

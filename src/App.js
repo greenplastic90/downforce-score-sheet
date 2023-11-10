@@ -31,6 +31,7 @@ function App() {
 		{ pos: 5, title: '5th', color: '', payout: 2 },
 		{ pos: 6, title: '6th', color: '', payout: 0 },
 	])
+	const [activeBetIndex, setActiveBetIndex] = useState(0)
 
 	function resetSheet() {
 		setActiveStep(0)
@@ -133,7 +134,15 @@ function App() {
 			case 0:
 				return <Auctions cars={cars} onBidChange={updateCarBid} />
 			case 1:
-				return <Bets bets={bets} onBetColorChange={handleBetColorChange} cars={cars} />
+				return (
+					<Bets
+						bets={bets}
+						onBetColorChange={handleBetColorChange}
+						cars={cars}
+						activeBetIndex={activeBetIndex}
+						setActiveBetIndex={setActiveBetIndex}
+					/>
+				)
 			case 2:
 				return (
 					<RacePlacement

@@ -35,7 +35,7 @@ function RacePlacement({ placements, onPlacementColorChange, cars }) {
 				return (
 					<Stack w={'full'} key={placement.title}>
 						<HStack>
-							<Text>
+							<Text minW={'40px'}>
 								{number}
 								<Text as='sup' fontSize='sm' fontWeight='bold'>
 									{suffix}
