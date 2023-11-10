@@ -13,25 +13,15 @@ function NavButtons({
 	return (
 		<VStack w={'full'}>
 			{activeStep === 3 && (
-				<Button colorScheme='orange' onClick={resetSheet} borderRadius={'none'}>
-					Reset
+				<Button colorScheme='orange' onClick={resetSheet}>
+					Restart Sheet
 				</Button>
 			)}
 			<HStack w={'full'}>
-				<Button
-					w={'full'}
-					onClick={stepBack}
-					isDisabled={disableBack}
-					colorScheme={'blackAlpha'}
-					borderRadius={'none'}>
+				<Button onClick={stepBack} isDisabled={disableBack} colorScheme={'blackAlpha'}>
 					<MdArrowBack size={30} />
 				</Button>
-				<Button
-					w={'full'}
-					onClick={stepForward}
-					isDisabled={disableForward}
-					colorScheme={'blackAlpha'}
-					borderRadius={'none'}>
+				<Button onClick={stepForward} isDisabled={disableForward} colorScheme={'blackAlpha'}>
 					<MdArrowForward size={30} />
 				</Button>
 			</HStack>

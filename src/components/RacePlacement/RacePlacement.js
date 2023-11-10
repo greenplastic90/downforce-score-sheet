@@ -1,4 +1,4 @@
-import { VStack, Select, HStack, Text, Stack, Button } from '@chakra-ui/react'
+import { Select, HStack, Text, Stack, Button } from '@chakra-ui/react'
 import React from 'react'
 import Car from '../miscellaneous/Car'
 import CarsWrapper from '../miscellaneous/CarsWrapper'
@@ -13,7 +13,6 @@ function RacePlacement({ placements, onPlacementColorChange, cars }) {
 		return cars.filter((car) => !selectedColors.includes(car.color) || car.color === currentColor)
 	}
 
-	// Function to reset all colors
 	function resetAllColors() {
 		placements.forEach((placement) => onPlacementColorChange(placement.title, ''))
 	}
@@ -53,7 +52,7 @@ function RacePlacement({ placements, onPlacementColorChange, cars }) {
 				)
 			})}
 
-			<Button colorScheme='red' onClick={resetAllColors} borderRadius={'none'}>
+			<Button colorScheme='orange' onClick={resetAllColors}>
 				Reset Placements
 			</Button>
 		</Stack>

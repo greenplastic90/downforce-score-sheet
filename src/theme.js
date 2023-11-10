@@ -25,6 +25,14 @@ const components = {
 			fontSize: 'xl',
 		},
 	},
+	Button: {
+		baseStyle: {
+			fontWeight: 'bold',
+			fontStyle: 'italic',
+			borderRadius: 'none',
+			width: '100%',
+		},
+	},
 }
 
 const theme = extendTheme({
