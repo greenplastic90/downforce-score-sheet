@@ -15,15 +15,13 @@ function BettingPayouts({ payout }) {
 						const { number, suffix } = splitOrdinalNumber(position)
 						return (
 							<Box key={position} textAlign='center'>
-								<Text fontSize='xl' fontWeight='bold'>
+								<Text>
 									{number}
-									<Text as='sup' fontSize='sm' fontWeight='bold'>
+									<Text as='sup' fontSize='sm'>
 										{suffix}
 									</Text>
 								</Text>
-								<Text fontSize='lg' fontWeight='bold'>
-									${amount} M
-								</Text>
+								<Text>${amount} M</Text>
 							</Box>
 						)
 					})}
