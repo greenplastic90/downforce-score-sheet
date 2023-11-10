@@ -13,7 +13,7 @@ function MyCars({ cars }) {
 					{myCars.map(({ name, color, bid }) => (
 						<CarsWrapper key={color}>
 							<Car name={name} color={color} />
-							<Stack justify={'center'} h={'inherit'} bg={`${color}.100`} border={'2px solid red'}>
+							<Stack justify={'center'} h={'inherit'} bg={`${color}.200`} border={'2px solid red'}>
 								<Text textAlign={'center'} minW={'60px'}>{`$${bid} M`}</Text>
 							</Stack>
 						</CarsWrapper>

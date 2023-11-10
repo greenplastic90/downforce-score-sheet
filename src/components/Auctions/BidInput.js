@@ -28,7 +28,7 @@ function BidInput({ car, onBidChange }) {
 					fontWeight={'bold'}
 					border={'2px solid'}
 					borderRadius={'none'}
-					bg={`${car.color}.100`}
+					bg={`${car.color}.200`}
 					borderColor={'red.600'}
 					_focus={{
 						borderColor: `${car.color}.700`,

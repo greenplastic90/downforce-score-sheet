@@ -17,7 +17,7 @@ function BetDisplay({ bets }) {
 							{color && (
 								<CarsWrapper>
 									<Car name={color === 'blackAlpha' ? 'black' : color} color={color} />
-									<Stack justify={'center'} h={'inherit'} bg={`${color}.100`}>
+									<Stack justify={'center'} h={'inherit'} bg={`${color}.200`}>
 										<Text textAlign={'center'} minW={'60px'}>
 											{title}
 										</Text>

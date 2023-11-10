@@ -4,7 +4,7 @@ import React from 'react'
 
 function Car({ name, color }) {
 	return (
-		<HStack w={'inherit'} h={'inherit'} bg={`${color}.100`} px={2}>
+		<HStack w={'inherit'} h={'inherit'} bg={`${color}.200`} px={2}>
 			<HStack>
 				<Stack color={`${color}.600`}>
 					<GiF1Car size={80} />
