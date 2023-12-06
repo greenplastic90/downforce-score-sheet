@@ -6,7 +6,7 @@ const splitOrdinalNumber = (number) => {
   return { number, suffix: ordinals[number] }
 }
 
-function Payouts({ payout }) {
+function Payouts({ payout, small = false }) {
   return (
     <HStack w={'full'} p={2} border={'3px solid'} borderColor={'gray.600'} borderRadius={'lg'}>
       <VStack w={'full'}>
@@ -16,13 +16,13 @@ function Payouts({ payout }) {
             const { number, suffix } = splitOrdinalNumber(position)
             return (
               <Box key={position} textAlign='center'>
-                <Text>
+                <Text fontSize={small ? 'sm' : 'md'}>
                   {number}
-                  <Text as='sup' fontSize='sm'>
+                  <Text as='sup' fontSize={small ? '10px' : 'sm'}>
                     {suffix}
                   </Text>
                 </Text>
-                <Text>${amount} M</Text>
+                <Text fontSize={small ? 'xs' : 'md'}>${amount} M</Text>
               </Box>
             )
           })}
