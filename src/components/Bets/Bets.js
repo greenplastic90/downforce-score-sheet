@@ -1,6 +1,6 @@
 import React from 'react'
 import { Heading, Select, VStack } from '@chakra-ui/react'
-import BettingPayouts from './BettingPayouts'
+import Payouts from './Payouts'
 import MyCars from '../miscellaneous/MyCars'
 import BetDisplay from './BetDisplay'
 
@@ -29,7 +29,7 @@ function Bets({ bets, onBetColorChange, cars, activeBetIndex, setActiveBetIndex 
           {activeBetIndex === betIndex && (
             <VStack w={'full'}>
               <Heading>{title}</Heading>
-              <BettingPayouts payout={payout} color={color} />
+              <Payouts payout={payout} />
               <Select
                 onChange={(e) => handleColorChange(title, e.target.value)}
                 value={color}

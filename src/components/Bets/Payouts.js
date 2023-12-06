@@ -2,11 +2,11 @@ import React from 'react'
 import { Box, Text, HStack, VStack, Heading } from '@chakra-ui/react'
 
 const splitOrdinalNumber = (number) => {
-  const ordinals = { 1: 'st', 2: 'nd', 3: 'rd' }
+  const ordinals = { 1: 'st', 2: 'nd', 3: 'rd', 4: 'th', 5: 'th', 6: 'th' }
   return { number, suffix: ordinals[number] }
 }
 
-function BettingPayouts({ payout }) {
+function Payouts({ payout }) {
   return (
     <HStack w={'full'} p={2} border={'3px solid'} borderColor={'gray.600'} borderRadius={'lg'}>
       <VStack w={'full'}>
@@ -32,4 +32,4 @@ function BettingPayouts({ payout }) {
   )
 }
 
-export default BettingPayouts
+export default Payouts
