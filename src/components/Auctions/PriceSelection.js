@@ -8,6 +8,7 @@ function PriceSelection({ color, handleValueChange }) {
         <VStack
           key={value}
           onClick={() => handleValueChange(value)}
+          cursor={'pointer'}
           bgColor={`${color}.200`}
           align={'center'}
           justify={'center'}
