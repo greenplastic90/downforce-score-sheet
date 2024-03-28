@@ -65,7 +65,7 @@ function RacePlacement({ placements, onPlacementColorChange, cars }) {
         )
       })}
       <Button w='200px' alignSelf={'end'} colorScheme='red' onClick={resetAllColors}>
-        Redo Placements?
+        Made a mistake?
       </Button>
     </Stack>
   )
