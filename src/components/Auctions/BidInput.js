@@ -1,17 +1,37 @@
-import { Button, NumberInput, NumberInputField } from '@chakra-ui/react'
+import {
+  Button,
+  HStack,
+  Heading,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  NumberInput,
+  NumberInputField,
+  Text,
+  VStack,
+  useDisclosure,
+} from '@chakra-ui/react'
 import React from 'react'
 import Car from '../miscellaneous/Car'
 import CarsWrapper from '../miscellaneous/CarsWrapper'
+import PriceSelection from './PriceSelection'
 
 function BidInput({ car, onBidChange }) {
-  function handleValueChange(valueAsString, valueAsNumber) {
-    onBidChange(car.color, valueAsNumber)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  function handleValueChange(value) {
+    onBidChange(car.color, value)
+    onClose()
   }
 
   return (
     <CarsWrapper>
       <Car name={car.name} color={car.color} />
       <Button
+        onClick={onOpen}
+        border={car.bid ? '2px solid' : ''}
+        borderColor={car.bid ? `${car.color}.600` : ''}
         variant={'buy'}
         bgColor={`${car.color}.200`}
         colorScheme={car.color}
@@ -19,34 +39,16 @@ function BidInput({ car, onBidChange }) {
         h={'inherit'}>
         {car.bid ? `$${car.bid} M` : 'Buy'}
       </Button>
-      {/* <NumberInput
-				h={'inherit'}
-				maxW={'80px'}
-				onChange={handleValueChange}
-				value={car.bid}
-				defaultValue={0}
-				max={6}
-				min={0}
-				keepWithinRange={false}
-				clampValueOnBlur={false}>
-				<NumberInputField
-					h={'inherit'}
-					textAlign={'end'}
-					color={'gray.600'}
-					fontWeight={'bold'}
-					border={'2px solid'}
-					borderRadius={'none'}
-					bg={`${car.color}.200`}
-					borderColor={'red.600'}
-					_focus={{
-						borderColor: `${car.color}.700`,
-						boxShadow: `0 0 0 1px ${car.color}.700`,
-					}}
-					_hover={{
-						borderColor: `${car.color}.600`,
-					}}
-				/>
-			</NumberInput> */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+
+        <ModalContent>
+          <VStack p={4}>
+            <Heading>Price</Heading>
+            <PriceSelection color={car.color} handleValueChange={handleValueChange} />
+          </VStack>
+        </ModalContent>
+      </Modal>
     </CarsWrapper>
   )
 }
