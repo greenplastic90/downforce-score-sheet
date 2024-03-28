@@ -1,17 +1,25 @@
-import { NumberInput, NumberInputField } from '@chakra-ui/react'
+import { Button, NumberInput, NumberInputField } from '@chakra-ui/react'
 import React from 'react'
 import Car from '../miscellaneous/Car'
 import CarsWrapper from '../miscellaneous/CarsWrapper'
 
 function BidInput({ car, onBidChange }) {
-	function handleValueChange(valueAsString, valueAsNumber) {
-		onBidChange(car.color, valueAsNumber)
-	}
+  function handleValueChange(valueAsString, valueAsNumber) {
+    onBidChange(car.color, valueAsNumber)
+  }
 
-	return (
-		<CarsWrapper>
-			<Car name={car.name} color={car.color} />
-			<NumberInput
+  return (
+    <CarsWrapper>
+      <Car name={car.name} color={car.color} />
+      <Button
+        variant={'buy'}
+        bgColor={`${car.color}.200`}
+        colorScheme={car.color}
+        w={'80px'}
+        h={'inherit'}>
+        {car.bid ? `$${car.bid} M` : 'Buy'}
+      </Button>
+      {/* <NumberInput
 				h={'inherit'}
 				maxW={'80px'}
 				onChange={handleValueChange}
@@ -38,9 +46,9 @@ function BidInput({ car, onBidChange }) {
 						borderColor: `${car.color}.600`,
 					}}
 				/>
-			</NumberInput>
-		</CarsWrapper>
-	)
+			</NumberInput> */}
+    </CarsWrapper>
+  )
 }
 
 export default BidInput
